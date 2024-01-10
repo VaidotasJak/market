@@ -19,7 +19,7 @@ public class Registration {
     private String lastName;
     private String dob;
     private String email;
-    private Integer phoneNumber;
+    private Long phoneNumber;
     private String country;
     private boolean isSportsMan;
     private SportType typeOfSport;

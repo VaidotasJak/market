@@ -1,5 +1,6 @@
 package com.skydive.market.model.listing;
 
+import com.skydive.market.model.ListingStatus;
 import com.skydive.market.model.registration.Registration;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class Listing {
     private String description;
     private Double weight;
     private Double price;
+    private ListingStatus listingStatus;
     @ManyToOne
     @JoinColumn(name = "registration_id")
     private Registration registration;

@@ -34,5 +34,65 @@
         "price": 299.99
       }
     ]
+  },
+  {
+    "name": "Jane",
+    "lastName": "Smith",
+    "dob": "1985-08-20",
+    "email": "jane.smith@example.com",
+    "phoneNumber": 1231231235,
+    "country": "Canada",
+    "isSportsMan": false,
+    "typeOfSport": "WINGSUITE",
+    "listings": [
+      {
+        "name": "Wingsuit Gloves",
+        "description": "Comfortable gloves for wingsuit enthusiasts",
+        "weight": 0.3,
+        "price": 39.99
+      },
+      {
+        "name": "Base Jumping Goggles",
+        "description": "Protective goggles for base jumping adventures",
+        "weight": 0.4,
+        "price": 59.99
+      }
+    ]
+  },
+  {
+    "name": "Emily",
+    "lastName": "Williams",
+    "dob": "1995-03-25",
+    "email": "emily.williams@example.com",
+    "phoneNumber": 1231231234,
+    "country": "United Kingdom",
+    "isSportsMan": false,
+    "typeOfSport": "PARAGLIDING",
+    "listings": [
+      {
+        "name": "Paragliding Harness",
+        "description": "High-quality harness for paragliding adventures",
+        "weight": 1.5,
+        "price": 179.99
+      }
+    ]
+  },
+  {
+    "name": "Alex",
+    "lastName": "Turner",
+    "dob": "1988-06-12",
+    "email": "alex.turner@example.com",
+    "phoneNumber": 1231231234,
+    "country": "New Zealand",
+    "isSportsMan": true,
+    "typeOfSport": "BASEJUMP",
+    "listings": [
+      {
+        "name": "Base Jumping Helmet",
+        "description": "Protective helmet for base jumping enthusiasts",
+        "weight": 0.9,
+        "price": 129.99
+      }
+    ]
   }
 ]
