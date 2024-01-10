@@ -1,0 +1,38 @@
+[
+  {
+    "name": "John",
+    "lastName": "Doe",
+    "dob": "1990-05-15",
+    "email": "john.doe@example.com",
+    "phoneNumber": 1234567890,
+    "country": "United States",
+    "isSportsMan": true,
+    "typeOfSport": "SKYDIVE",
+    "listings": [
+      {
+        "name": "Skydiving Helmet",
+        "description": "High-quality helmet for skydiving enthusiasts",
+        "weight": 0.8,
+        "price": 149.99
+      },
+      {
+        "name": "Wingsuit",
+        "description": "State-of-the-art wingsuit for an exhilarating flight experience",
+        "weight": 2.5,
+        "price": 599.99
+      },
+      {
+        "name": "Indoor Skydiving Session",
+        "description": "Experience the thrill of skydiving indoors with this session",
+        "weight": 0.2,
+        "price": 49.99
+      },
+      {
+        "name": "Base Jumping Parachute",
+        "description": "Specialized parachute for safe base jumping adventures",
+        "weight": 1.2,
+        "price": 299.99
+      }
+    ]
+  }
+]
