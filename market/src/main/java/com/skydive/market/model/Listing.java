@@ -1,7 +1,6 @@
-package com.skydive.market.model.listing;
+package com.skydive.market.model;
 
-import com.skydive.market.model.ListingStatus;
-import com.skydive.market.model.registration.Registration;
+import com.skydive.market.model.enums.ListingStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

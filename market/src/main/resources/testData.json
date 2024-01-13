@@ -2,6 +2,7 @@
   {
     "name": "John",
     "lastName": "Doe",
+    "password": "password1",
     "dob": "1990-05-15",
     "email": "john.doe@example.com",
     "phoneNumber": 1234567890,
@@ -38,6 +39,7 @@
   {
     "name": "Jane",
     "lastName": "Smith",
+    "password": "password2",
     "dob": "1985-08-20",
     "email": "jane.smith@example.com",
     "phoneNumber": 1231231235,
@@ -62,6 +64,7 @@
   {
     "name": "Emily",
     "lastName": "Williams",
+    "password": "password3",
     "dob": "1995-03-25",
     "email": "emily.williams@example.com",
     "phoneNumber": 1231231234,
@@ -80,6 +83,7 @@
   {
     "name": "Alex",
     "lastName": "Turner",
+    "password": "password4",
     "dob": "1988-06-12",
     "email": "alex.turner@example.com",
     "phoneNumber": 1231231234,

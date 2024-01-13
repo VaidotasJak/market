@@ -1,6 +1,6 @@
 package com.skydive.market.service.hibernateService;
-import com.skydive.market.model.listing.Listing;
-import com.skydive.market.model.registration.Registration;
+import com.skydive.market.model.Listing;
+import com.skydive.market.model.Registration;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

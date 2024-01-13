@@ -1,4 +1,4 @@
-package com.skydive.market.model;
+package com.skydive.market.model.enums;
 
 public enum ListingStatus {
     SOLD, AVAILABLE

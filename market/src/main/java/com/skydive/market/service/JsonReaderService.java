@@ -2,7 +2,7 @@ package com.skydive.market.service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.skydive.market.model.registration.Registration;
+import com.skydive.market.model.Registration;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
