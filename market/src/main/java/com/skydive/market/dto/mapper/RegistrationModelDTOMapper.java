@@ -4,9 +4,11 @@ import com.skydive.market.controller.request.RegistrationRequest;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.model.Registration;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RegistrationModelDTOMapper {
-    public RegistrationModelDTO mapToModel(RegistrationRequest registrationRequest) {
+    public RegistrationModelDTO mapToModel(final RegistrationRequest registrationRequest) {
         return new RegistrationModelDTO()
                 .setName(registrationRequest.getName())
                 .setLastName(registrationRequest.getLastName())
@@ -19,7 +21,7 @@ public class RegistrationModelDTOMapper {
                 .setTypeOfSport(registrationRequest.getTypeOfSport());
     }
 
-    public RegistrationCreationDTO fromRegistration(Registration registration) {
+    public RegistrationCreationDTO fromRegistration(final Registration registration) {
         return new RegistrationCreationDTO()
                 .setId(registration.getId())
                 .setName(registration.getName())

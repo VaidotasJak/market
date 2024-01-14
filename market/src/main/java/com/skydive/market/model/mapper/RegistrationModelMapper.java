@@ -2,6 +2,9 @@ package com.skydive.market.model.mapper;
 
 import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.model.Registration;
+import org.springframework.stereotype.Service;
+
+@Service
 public class RegistrationModelMapper {
     public Registration mapToModel(RegistrationModelDTO dto) {
         return new Registration()

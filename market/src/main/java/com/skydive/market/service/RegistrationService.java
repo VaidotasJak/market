@@ -7,6 +7,7 @@ import com.skydive.market.exceptions.RegistrationAlreadyExistsException;
 import com.skydive.market.model.Registration;
 import com.skydive.market.model.mapper.RegistrationModelMapper;
 import com.skydive.market.repository.RegistrationRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,31 +15,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class RegistrationService {
-    @Autowired
-    private RegistrationRepository registrationRepository;
-
+    private final RegistrationRepository registrationRepository;
+    private final RegistrationModelDTOMapper registrationModelDTOMapper;
+    private final RegistrationModelMapper registrationModelMapper;
     public void saveAll(List<Registration> registrations) {
         RegistrationRepository registrationRepository = new RegistrationRepository();
         registrationRepository.saveAll(registrations);
     }
 
     public Registration registerNewUser(RegistrationModelDTO dto) {
-        List<Registration> existingRegistrations = registrationRepository.fetchData(dto.getEmail(), dto.getPhoneNumber());
+        List<Registration> existingRegistrations = registrationRepository.fetchData(dto);
         if (!existingRegistrations.isEmpty()) {
             throw new RegistrationAlreadyExistsException("User with this email, or phone number already exist.");
         }
-        return registrationRepository.save(new
-                RegistrationModelMapper().mapToModel(dto));
+        return registrationRepository.save(registrationModelMapper.mapToModel(dto));
     }
 
     public List<RegistrationCreationDTO> getAllRegistrations() {
         List<Registration> registrationList = registrationRepository.getAllRegistrations();
         List<RegistrationCreationDTO> registrationCreationDTOS = new ArrayList<>();
-
-        for (Registration registration : registrationList) {
-            registrationCreationDTOS.add(new RegistrationModelDTOMapper().fromRegistration(registration));
-        }
+        registrationList.forEach(registration -> registrationCreationDTOS.add(registrationModelDTOMapper.fromRegistration(registration)));
         return registrationCreationDTOS;
     }
 
