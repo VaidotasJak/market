@@ -8,7 +8,6 @@ import com.skydive.market.model.Registration;
 import com.skydive.market.model.mapper.RegistrationModelMapper;
 import com.skydive.market.repository.RegistrationRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -39,6 +38,4 @@ public class RegistrationService {
         registrationList.forEach(registration -> registrationCreationDTOS.add(registrationModelDTOMapper.fromRegistration(registration)));
         return registrationCreationDTOS;
     }
-
-
 }

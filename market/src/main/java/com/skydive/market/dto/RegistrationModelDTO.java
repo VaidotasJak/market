@@ -1,10 +1,13 @@
 package com.skydive.market.dto;
 
+import com.skydive.market.model.Listing;
 import com.skydive.market.model.enums.SportType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor

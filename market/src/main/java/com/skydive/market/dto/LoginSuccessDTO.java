@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
-public class RegistrationCreationDTO {
+public class LoginSuccessDTO {
     private Long id;
     private String name;
     private String lastName;
@@ -22,5 +22,4 @@ public class RegistrationCreationDTO {
     private boolean isSportsMan;
     private SportType typeOfSport;
     private boolean belongsToGroup;
-
 }

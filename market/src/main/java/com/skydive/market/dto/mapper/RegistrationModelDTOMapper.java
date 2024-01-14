@@ -6,6 +6,8 @@ import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.model.Registration;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class RegistrationModelDTOMapper {
     public RegistrationModelDTO mapToModel(final RegistrationRequest registrationRequest) {
@@ -17,7 +19,7 @@ public class RegistrationModelDTOMapper {
                 .setEmail(registrationRequest.getEmail())
                 .setPhoneNumber(registrationRequest.getPhoneNumber())
                 .setCountry(registrationRequest.getCountry())
-                .setSportsMan(registrationRequest.isSportsMan())
+                .setSportsMan(registrationRequest.getIsSportsMan())
                 .setTypeOfSport(registrationRequest.getTypeOfSport());
     }
 

@@ -16,6 +16,6 @@ public class RegistrationRequest {
         private String email;
         private Long phoneNumber;
         private String country;
-        private boolean isSportsMan;
+        private Boolean isSportsMan;
         private SportType typeOfSport;
 }

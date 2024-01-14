@@ -3,7 +3,6 @@ package com.skydive.market.controller.api;
 import com.skydive.market.controller.request.RegistrationRequest;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.mapper.RegistrationModelDTOMapper;
-import com.skydive.market.exceptions.ResourceNotFoundException;
 import com.skydive.market.model.Registration;
 import com.skydive.market.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
