@@ -4,6 +4,7 @@ import com.skydive.market.controller.request.LoginRequest;
 import com.skydive.market.dto.LoginModelDTO;
 import com.skydive.market.dto.LoginSuccessDTO;
 import com.skydive.market.model.Listing;
+import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class LoginModelDTOMapper {
                 .setPassword(loginRequest.getPassword());
     }
 
-    public LoginSuccessDTO fromExistingRegistration(final Registration registration, final List<Listing> listings) {
+    public LoginSuccessDTO fromExistingRegistration(final Registration registration, final List<ListingDto> listings) {
         return new LoginSuccessDTO()
                 .setId(registration.getId())
                 .setName(registration.getName())

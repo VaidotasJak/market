@@ -4,12 +4,13 @@ import com.skydive.market.dto.ListingModelDTO;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.mapper.ListingModelDTOMapper;
 import com.skydive.market.model.Listing;
+import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import com.skydive.market.model.mapper.ListingModelMapper;
-import com.skydive.market.model.mapper.RegistrationModelMapper;
 import com.skydive.market.repository.ListingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +21,15 @@ public class ListingService {
     private final ListingRepository listingRepository;
     private final ListingModelMapper listingModelMapper;
 
-    public List<Listing> getAllListings(final RegistrationCreationDTO dto) {
-        List<Listing> listings = listingRepository.fetchAllListings(dto);
+    public List<ListingDto> getAllListings(final RegistrationCreationDTO dto) {
+//        List<Listing> listings = listingRepository.fetchAllListings(dto);
+        List<ListingDto> listings = listingRepository.fetchAllListings2(dto);
         if(listings.isEmpty()){
             return new ArrayList<>();
         }
         return listings;
     }
-
+    @Transactional
     public Listing createListing(ListingModelDTO listingModelDTO, Registration registration) {
         Listing listing = listingModelMapper.mapToModel(listingModelDTO);
         listing.setRegistration(registration);

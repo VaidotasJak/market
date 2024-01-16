@@ -2,6 +2,7 @@ package com.skydive.market.repository;
 
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.model.Listing;
+import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import com.skydive.market.service.hibernateService.HibernateService;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,20 @@ public class ListingRepository {
         Query query = session.createNativeQuery("SELECT * FROM listing WHERE registration_id = " + dto.getId() + ";", Listing.class);
         @SuppressWarnings("unchecked")
         List<Listing> items = (List<Listing>) query.getResultList();
+        listings = items;
+        transaction.commit();
+        session.close();
+        return listings;
+    }
+
+    public List<ListingDto> fetchAllListings2(RegistrationCreationDTO dto) {
+        List<ListingDto> listings = new ArrayList<>();
+        Session session = HibernateService.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createNativeQuery("SELECT * FROM listing WHERE registration_id = " + dto.getId() + ";");
+        @SuppressWarnings("unchecked")
+        List<ListingDto> items = (List<ListingDto>) query.getResultList();
         listings = items;
         transaction.commit();
         session.close();

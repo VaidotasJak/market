@@ -11,10 +11,10 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(RegistrationAlreadyExistsException.class)
-    public ResponseEntity<Object> handleRegistrationAlreadyExistsException(RegistrationAlreadyExistsException exception) {
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(exception.getMessage());
+    public ResponseEntity<Object> handleRegistrationAlreadyExistsException(RegistrationAlreadyExistsException ex) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("message", ex.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)

@@ -3,6 +3,7 @@ package com.skydive.market.service;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.dto.mapper.RegistrationModelDTOMapper;
+import com.skydive.market.exceptions.NoSuchUserException;
 import com.skydive.market.exceptions.RegistrationAlreadyExistsException;
 import com.skydive.market.model.Registration;
 import com.skydive.market.model.mapper.RegistrationModelMapper;
@@ -44,6 +45,7 @@ public class RegistrationService {
 
     public Registration getRegistration(Integer userId) {
         List<Registration> registrationList = registrationRepository.getRegistration(userId);
+        if(registrationList.isEmpty()) {throw new NoSuchUserException("User with id: " + userId + " does not exists."); }
         return registrationList.get(0);
     }
 }

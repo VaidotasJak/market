@@ -72,16 +72,16 @@ public class RegistrationRepository {
     }
 
     public List<Registration> getRegistration(Integer userId) {
-        List<Registration> registrations;
+        List<Registration> registration;
         Session session = HibernateService.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
         Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE id = " + userId + ";", Registration.class);
         @SuppressWarnings("unchecked")
         List<Registration> items = (List<Registration>) query.getResultList();
-        registrations = items;
+        registration = items;
         transaction.commit();
         session.close();
-        return registrations;
+        return registration;
     }
 }

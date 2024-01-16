@@ -10,6 +10,7 @@ import com.skydive.market.model.Registration;
 import com.skydive.market.service.ListingService;
 import com.skydive.market.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,9 @@ public class ListingController {
 //        registrationService.saveRegistration(registration);
 //        newListing.setRegistration(registration);
 //        listingService.assignListing(newListing);
-        return ResponseEntity.accepted().body(newListing);
+        return new ResponseEntity<>(newListing, HttpStatus.CREATED);
+
+//        return ResponseEntity.accepted().body(newListing);
     }
 
 }

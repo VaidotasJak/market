@@ -1,6 +1,7 @@
 package com.skydive.market.dto;
 
 import com.skydive.market.model.Listing;
+import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.enums.SportType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,5 @@ public class LoginSuccessDTO {
     private boolean isSportsMan;
     private SportType typeOfSport;
     private boolean belongsToGroup;
-    private List<Listing> listings;
+    private List<ListingDto> listings;
 }
