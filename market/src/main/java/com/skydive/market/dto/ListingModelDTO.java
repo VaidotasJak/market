@@ -1,7 +1,5 @@
 package com.skydive.market.dto;
 
-import com.skydive.market.model.enums.ListingStatus;
-import com.skydive.market.model.enums.SportType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;

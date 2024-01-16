@@ -1,9 +1,7 @@
 package com.skydive.market.repository;
 
 import com.skydive.market.dto.LoginModelDTO;
-import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.model.Registration;
-import com.skydive.market.model.enums.ListingStatus;
 import com.skydive.market.service.hibernateService.HibernateService;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
