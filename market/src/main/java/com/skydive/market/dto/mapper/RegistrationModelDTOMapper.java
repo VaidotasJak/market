@@ -6,8 +6,6 @@ import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.model.Registration;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 @Service
 public class RegistrationModelDTOMapper {
     public RegistrationModelDTO mapToModel(final RegistrationRequest registrationRequest) {

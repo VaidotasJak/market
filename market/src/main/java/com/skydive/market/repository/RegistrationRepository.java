@@ -2,17 +2,14 @@ package com.skydive.market.repository;
 
 import com.skydive.market.dto.RegistrationModelDTO;
 import com.skydive.market.model.enums.ListingStatus;
-import com.skydive.market.model.Listing;
 import com.skydive.market.model.Registration;
 import com.skydive.market.service.hibernateService.HibernateService;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -40,7 +37,7 @@ public class RegistrationRepository {
         session.save(registration);
         transaction.commit();
         session.close();
-        log.info("NEW USER WAS CREATED");
+        log.info("SAVED");
         return registration;
     }
 
@@ -66,6 +63,20 @@ public class RegistrationRepository {
         Transaction transaction = session.beginTransaction();
 
         Query query = session.createNativeQuery("SELECT * FROM REGISTRATION;", Registration.class);
+        @SuppressWarnings("unchecked")
+        List<Registration> items = (List<Registration>) query.getResultList();
+        registrations = items;
+        transaction.commit();
+        session.close();
+        return registrations;
+    }
+
+    public List<Registration> getRegistration(Integer userId) {
+        List<Registration> registrations;
+        Session session = HibernateService.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE id = " + userId + ";", Registration.class);
         @SuppressWarnings("unchecked")
         List<Registration> items = (List<Registration>) query.getResultList();
         registrations = items;

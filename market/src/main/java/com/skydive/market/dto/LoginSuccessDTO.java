@@ -22,4 +22,5 @@ public class LoginSuccessDTO {
     private boolean isSportsMan;
     private SportType typeOfSport;
     private boolean belongsToGroup;
+    private List<Listing> listings;
 }

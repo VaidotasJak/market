@@ -3,8 +3,11 @@ package com.skydive.market.dto.mapper;
 import com.skydive.market.controller.request.LoginRequest;
 import com.skydive.market.dto.LoginModelDTO;
 import com.skydive.market.dto.LoginSuccessDTO;
+import com.skydive.market.model.Listing;
 import com.skydive.market.model.Registration;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class LoginModelDTOMapper {
@@ -14,7 +17,7 @@ public class LoginModelDTOMapper {
                 .setPassword(loginRequest.getPassword());
     }
 
-    public LoginSuccessDTO fromExistingRegistration(final Registration registration) {
+    public LoginSuccessDTO fromExistingRegistration(final Registration registration, final List<Listing> listings) {
         return new LoginSuccessDTO()
                 .setId(registration.getId())
                 .setName(registration.getName())
@@ -25,6 +28,7 @@ public class LoginModelDTOMapper {
                 .setCountry(registration.getCountry())
                 .setSportsMan(registration.isSportsMan())
                 .setTypeOfSport(registration.getTypeOfSport())
-                .setBelongsToGroup(registration.isBelongsToGroup());
+                .setBelongsToGroup(registration.isBelongsToGroup())
+                .setListings(listings);
     }
 }

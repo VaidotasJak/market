@@ -3,11 +3,13 @@ package com.skydive.market.model;
 import com.skydive.market.model.enums.ListingStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+@Accessors(chain = true)
 @Entity
 public class Listing {
     @Id

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,7 +27,7 @@ public class Registration {
     private String country;
     private boolean isSportsMan;
     private SportType typeOfSport;
-    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
-    private List<Listing> listings;
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Listing> listings = new ArrayList<>();
     private boolean belongsToGroup;
 }

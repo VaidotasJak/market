@@ -19,11 +19,10 @@ public class RegistrationService {
     private final RegistrationRepository registrationRepository;
     private final RegistrationModelDTOMapper registrationModelDTOMapper;
     private final RegistrationModelMapper registrationModelMapper;
-    public void saveAll(List<Registration> registrations) {
-        RegistrationRepository registrationRepository = new RegistrationRepository();
-        registrationRepository.saveAll(registrations);
-    }
-
+//    public void saveAll(List<Registration> registrations) {
+//        RegistrationRepository registrationRepository = new RegistrationRepository();
+//        registrationRepository.saveAll(registrations);
+//    }
     public Registration registerNewUser(RegistrationModelDTO dto) {
         List<Registration> existingRegistrations = registrationRepository.fetchData(dto);
         if (!existingRegistrations.isEmpty()) {
@@ -32,10 +31,19 @@ public class RegistrationService {
         return registrationRepository.save(registrationModelMapper.mapToModel(dto));
     }
 
+    public Registration saveRegistration(Registration registration) {
+        return registrationRepository.save(registration);
+    }
+
     public List<RegistrationCreationDTO> getAllRegistrations() {
         List<Registration> registrationList = registrationRepository.getAllRegistrations();
         List<RegistrationCreationDTO> registrationCreationDTOS = new ArrayList<>();
         registrationList.forEach(registration -> registrationCreationDTOS.add(registrationModelDTOMapper.fromRegistration(registration)));
         return registrationCreationDTOS;
+    }
+
+    public Registration getRegistration(Integer userId) {
+        List<Registration> registrationList = registrationRepository.getRegistration(userId);
+        return registrationList.get(0);
     }
 }

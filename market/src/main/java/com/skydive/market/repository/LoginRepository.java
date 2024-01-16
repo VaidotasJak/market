@@ -23,7 +23,7 @@ public class LoginRepository {
         Transaction transaction = session.beginTransaction();
 
 //        Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE EMAIL = '" + dto.getEmail() + "';", Registration.class);
-        Query query = session.createNativeQuery("SELECT * FROM REGISTRATION;", Registration.class);
+        Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE EMAIL = '"+dto.getEmail()+"';", Registration.class);
         @SuppressWarnings("unchecked")
         List<Registration> items = (List<Registration>) query.getResultList();
         registrations = items;

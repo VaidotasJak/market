@@ -26,7 +26,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(IncorrectPasswordException.class)
-    public ResponseEntity<Object> handleInccorectPasswordException(IncorrectPasswordException ex) {
+    public ResponseEntity<Object> handleIncorrectPasswordException(IncorrectPasswordException ex) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoSuchUserException.class)
+    public ResponseEntity<Object> handleNoSuchUserException(NoSuchUserException ex) {
         Map<String, Object> body = new HashMap<>();
         body.put("message", ex.getMessage());
 
