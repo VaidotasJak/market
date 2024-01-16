@@ -2,7 +2,6 @@ package com.skydive.market.service;
 
 import com.skydive.market.dto.ListingModelDTO;
 import com.skydive.market.dto.RegistrationCreationDTO;
-import com.skydive.market.dto.mapper.ListingModelDTOMapper;
 import com.skydive.market.model.Listing;
 import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;

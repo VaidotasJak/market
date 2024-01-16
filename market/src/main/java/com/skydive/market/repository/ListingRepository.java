@@ -3,7 +3,6 @@ package com.skydive.market.repository;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.model.Listing;
 import com.skydive.market.model.ListingDto;
-import com.skydive.market.model.Registration;
 import com.skydive.market.service.hibernateService.HibernateService;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;

@@ -1,12 +1,10 @@
 package com.skydive.market.controller.api;
 
 import com.skydive.market.controller.request.LoginRequest;
-import com.skydive.market.controller.request.RegistrationRequest;
 import com.skydive.market.dto.LoginSuccessDTO;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.mapper.LoginModelDTOMapper;
 import com.skydive.market.dto.mapper.RegistrationModelDTOMapper;
-import com.skydive.market.model.Listing;
 import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import com.skydive.market.service.ListingService;
@@ -14,7 +12,6 @@ import com.skydive.market.service.LoginService;
 import com.skydive.market.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
