@@ -1,6 +1,7 @@
 package com.skydive.market.controller.api;
 
 import com.skydive.market.controller.request.ListingRequest;
+import com.skydive.market.dto.ListingCreationDto;
 import com.skydive.market.dto.mapper.ListingModelDTOMapper;
 import com.skydive.market.model.Listing;
 import com.skydive.market.model.Registration;
@@ -20,16 +21,11 @@ public class ListingController {
     private final ListingModelDTOMapper listingModelDTOMapper;
 //
     @PostMapping(name = "CreateNewListing", value = "/new-listing/{userId}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Listing> createNewListing(@RequestBody final ListingRequest listingRequest, @PathVariable final Integer userId) {
+    public ResponseEntity<ListingCreationDto> createNewListing(@RequestBody final ListingRequest listingRequest, @PathVariable final Integer userId) {
         Registration registration = registrationService.getRegistration(userId);
         Listing newListing = listingService.createListing(listingModelDTOMapper.mapToModel(listingRequest), registration);
-//        registration.getListings().add(newListing);
-//        registrationService.saveRegistration(registration);
-//        newListing.setRegistration(registration);
-//        listingService.assignListing(newListing);
-        return new ResponseEntity<>(newListing, HttpStatus.CREATED);
-
-//        return ResponseEntity.accepted().body(newListing);
+        ListingCreationDto listingCreationDto = listingModelDTOMapper.fromListing(newListing);
+        return new ResponseEntity<>(listingCreationDto, HttpStatus.CREATED);
     }
 
 }

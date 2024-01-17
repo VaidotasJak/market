@@ -48,4 +48,5 @@ public class RegistrationService {
         if(registrationList.isEmpty()) {throw new NoSuchUserException("User with id: " + userId + " does not exists."); }
         return registrationList.get(0);
     }
+
 }

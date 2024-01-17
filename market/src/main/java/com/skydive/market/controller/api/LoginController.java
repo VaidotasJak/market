@@ -28,7 +28,6 @@ public class LoginController {
     private final LoginModelDTOMapper loginModelDTOMapper;
     private final RegistrationModelDTOMapper registrationModelDTOMapper;
 
-
     @PostMapping(name = "login", value = "/login", consumes = "application/json", produces = "application/json")
     public ResponseEntity<LoginSuccessDTO> login(@RequestBody final LoginRequest loginRequest) {
         Registration existingRegistration = loginService.login(loginModelDTOMapper.mapToModel(loginRequest));

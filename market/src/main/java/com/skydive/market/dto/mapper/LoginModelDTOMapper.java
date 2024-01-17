@@ -3,7 +3,6 @@ package com.skydive.market.dto.mapper;
 import com.skydive.market.controller.request.LoginRequest;
 import com.skydive.market.dto.LoginModelDTO;
 import com.skydive.market.dto.LoginSuccessDTO;
-import com.skydive.market.model.Listing;
 import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import org.springframework.stereotype.Service;
@@ -32,4 +31,5 @@ public class LoginModelDTOMapper {
                 .setBelongsToGroup(registration.isBelongsToGroup())
                 .setListings(listings);
     }
+
 }

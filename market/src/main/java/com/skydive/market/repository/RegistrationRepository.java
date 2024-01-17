@@ -84,4 +84,5 @@ public class RegistrationRepository {
         session.close();
         return registration;
     }
+
 }

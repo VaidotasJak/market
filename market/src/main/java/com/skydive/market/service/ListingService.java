@@ -21,13 +21,15 @@ public class ListingService {
     private final ListingModelMapper listingModelMapper;
 
     public List<ListingDto> getAllListings(final RegistrationCreationDTO dto) {
-//        List<Listing> listings = listingRepository.fetchAllListings(dto);
-        List<ListingDto> listings = listingRepository.fetchAllListings2(dto);
+        List<ListingDto> listings = listingRepository.fetchAllListings(dto);
+        System.out.println(listings);
         if(listings.isEmpty()){
             return new ArrayList<>();
         }
         return listings;
     }
+
+
     @Transactional
     public Listing createListing(ListingModelDTO listingModelDTO, Registration registration) {
         Listing listing = listingModelMapper.mapToModel(listingModelDTO);
