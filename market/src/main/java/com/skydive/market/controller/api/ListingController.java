@@ -28,4 +28,17 @@ public class ListingController {
         return new ResponseEntity<>(listingCreationDto, HttpStatus.CREATED);
     }
 
+    //:
+    /**
+     *Implement following controller:
+     * 1. to get all listings from all users and show it in the as list.
+     * User should also be able to filter listings by SOLD or AVAILABLE.
+     *
+     *
+     * 2. funcionalitu to update listing - so that user could change listingstatus from AVAILABLE to SOLD.
+     *
+     *
+     * 3. Functionality to delete listing from database.
+     */
+
 }

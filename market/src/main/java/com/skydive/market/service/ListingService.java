@@ -22,7 +22,6 @@ public class ListingService {
 
     public List<ListingDto> getAllListings(final RegistrationCreationDTO dto) {
         List<ListingDto> listings = listingRepository.fetchAllListings(dto);
-        System.out.println(listings);
         if(listings.isEmpty()){
             return new ArrayList<>();
         }
