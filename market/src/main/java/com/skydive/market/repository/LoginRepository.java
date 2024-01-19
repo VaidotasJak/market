@@ -20,7 +20,6 @@ public class LoginRepository {
         Session session = HibernateService.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-//        Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE EMAIL = '" + dto.getEmail() + "';", Registration.class);
         Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE EMAIL = '"+dto.getEmail()+"';", Registration.class);
         @SuppressWarnings("unchecked")
         List<Registration> items = (List<Registration>) query.getResultList();

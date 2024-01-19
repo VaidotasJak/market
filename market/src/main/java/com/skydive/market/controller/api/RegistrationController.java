@@ -13,19 +13,20 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/registrations")
 public class RegistrationController {
 
     private final RegistrationService registrationService;
     private final RegistrationModelDTOMapper registrationModelDTOMapper;
 
-    @PostMapping(name = "CreateNewUser", value = "/new-registration", consumes = "application/json", produces = "application/json")
+    @PostMapping(name = "CreateNewUser", value = "/new", consumes = "application/json", produces = "application/json")
     public ResponseEntity<RegistrationCreationDTO> createNewRegistration(@RequestBody final RegistrationRequest registrationRequest) {
         Registration newRegistration = registrationService.registerNewUser(registrationModelDTOMapper.mapToModel(registrationRequest));
         RegistrationCreationDTO registrationCreationDTO = registrationModelDTOMapper.fromRegistration(newRegistration);
         return ResponseEntity.accepted().body(registrationCreationDTO);
     }
 
-    @GetMapping("/registrations")
+    @GetMapping("/all")
     public ResponseEntity<List<RegistrationCreationDTO>> getAllRegistrations() {
         List<RegistrationCreationDTO> registrationCreationDTOS = registrationService.getAllRegistrations();
         return ResponseEntity.ok(registrationCreationDTOS);

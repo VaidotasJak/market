@@ -32,9 +32,9 @@ public class RegistrationService {
         return registrationRepository.save(registrationModelMapper.mapToModel(dto));
     }
 
-    public Registration saveRegistration(Registration registration) {
-        return registrationRepository.save(registration);
-    }
+//    public Registration saveRegistration(Registration registration) {
+//        return registrationRepository.save(registration);
+//    }
 
     public List<RegistrationCreationDTO> getAllRegistrations() {
         List<Registration> registrationList = registrationRepository.getAllRegistrations();

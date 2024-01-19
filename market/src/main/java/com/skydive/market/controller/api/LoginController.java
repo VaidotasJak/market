@@ -7,24 +7,26 @@ import com.skydive.market.dto.mapper.LoginModelDTOMapper;
 import com.skydive.market.dto.mapper.RegistrationModelDTOMapper;
 import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
-import com.skydive.market.service.ListingService;
+import com.skydive.market.service.ListingServiceImpl;
 import com.skydive.market.service.LoginService;
 import com.skydive.market.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/v1")
 public class LoginController {
 
     private final LoginService loginService;
     private final RegistrationService registrationService;
-    private final ListingService listingService;
+    private final ListingServiceImpl listingServiceImpl;
     private final LoginModelDTOMapper loginModelDTOMapper;
     private final RegistrationModelDTOMapper registrationModelDTOMapper;
 
@@ -33,7 +35,7 @@ public class LoginController {
         Registration existingRegistration = loginService.login(loginModelDTOMapper.mapToModel(loginRequest));
 
         RegistrationCreationDTO registrationCreationDTO = registrationModelDTOMapper.fromRegistration(existingRegistration);
-        List<ListingDto> userListings = listingService.getAllListings(registrationCreationDTO);
+        List<ListingDto> userListings = listingServiceImpl.getAllAvailable(registrationCreationDTO);
 
         LoginSuccessDTO loginSuccessDTO = loginModelDTOMapper.fromExistingRegistration(existingRegistration, userListings);
         return ResponseEntity.accepted().body(loginSuccessDTO);
