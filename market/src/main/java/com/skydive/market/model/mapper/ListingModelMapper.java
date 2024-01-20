@@ -20,28 +20,14 @@ public class ListingModelMapper {
                 .setListingStatus(ListingStatus.AVAILABLE);
     }
 
-    public Listing mapToListing(Map<String, Object> list) {
-        Listing listing = new Listing();
-        for (String s : list.keySet()) {
-            Object value = list.get(s);
-            System.out.println("Key: " + s + ", Value: " + value);
-            if (s.equals("name")) {
-                listing.setName((String) value);
-            }
-            if (s.equals("description")) {
-                listing.setDescription((String) value);
-            }
-            if (s.equals("weight")) {
-                listing.setWeight((Double) value);
-            }
-            if (s.equals("price")) {
-                listing.setPrice((Double) value);
-            }
-            if (s.equals("listingstatus")) {
-                listing.setListingStatus(value.equals(1) ? ListingStatus.AVAILABLE : ListingStatus.SOLD);
-            }
-        }
-        return listing;
+    public Listing mapToListing(ListingDto listingDto) {
+        return new Listing()
+                .setName(listingDto.getName())
+                .setDescription(listingDto.getDescription())
+                .setWeight(listingDto.getWeight())
+                .setPrice(listingDto.getPrice())
+                .setListingStatus(listingDto.getListingstatus().equals(1) ? ListingStatus.AVAILABLE : ListingStatus.SOLD);
+
     }
 
 }

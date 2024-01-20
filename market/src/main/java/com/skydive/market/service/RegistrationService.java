@@ -44,9 +44,9 @@ public class RegistrationService {
     }
 
     public Registration getRegistration(Integer userId) {
-        List<Registration> registrationList = registrationRepository.getRegistration(userId);
-        if(registrationList.isEmpty()) {throw new NoSuchUserException("User with id: " + userId + " does not exists."); }
-        return registrationList.get(0);
+        Registration registrationList = registrationRepository.getRegistration(userId);
+        if(registrationList == null) {throw new NoSuchUserException("User with id: " + userId + " does not exists."); }
+        return registrationList;
     }
 
 }

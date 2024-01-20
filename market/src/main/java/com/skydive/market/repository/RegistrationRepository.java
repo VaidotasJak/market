@@ -8,8 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
@@ -71,15 +73,17 @@ public class RegistrationRepository {
         return registrations;
     }
 
-    public List<Registration> getRegistration(Integer userId) {
-        List<Registration> registration;
+    public Registration getRegistration(Integer userId) {
+        Registration registration;
         Session session = HibernateService.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
         Query query = session.createNativeQuery("SELECT * FROM REGISTRATION WHERE id = " + userId + ";", Registration.class);
-        @SuppressWarnings("unchecked")
-        List<Registration> items = (List<Registration>) query.getResultList();
-        registration = items;
+        try{
+            registration = (Registration) query.getSingleResult();
+        } catch (NoResultException ex){
+            registration = null;
+        }
         transaction.commit();
         session.close();
         return registration;

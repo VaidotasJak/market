@@ -2,6 +2,7 @@ package com.skydive.market.service;
 
 import com.skydive.market.dto.ListingModelDTO;
 import com.skydive.market.dto.RegistrationCreationDTO;
+import com.skydive.market.exceptions.ListingDoesNotBelongsToRegistrationException;
 import com.skydive.market.exceptions.NoSuchListingException;
 import com.skydive.market.model.Listing;
 import com.skydive.market.model.ListingDto;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -50,14 +52,28 @@ public class ListingServiceImpl implements ListingService{
         if(listingDtos.isEmpty()) {
             throw new NoSuchListingException("Listing you were trying to delete, does not exist.");
         }
-        /**
-         * NEED TO ADD VALIDATION IF LISTING DOES NOT BELONG TO USER
-         */
-        Map<String, Object> list = (Map<String, Object>) listingDtos.get(0);
-        Listing listing = listingModelMapper.mapToListing(list);
+
+        if(!userCanDeleteListing(id, registration)){
+            throw new ListingDoesNotBelongsToRegistrationException("Listing with id: " + id + " does not belongs to registrations id:" + registration.getId());
+        }
+
+        ListingDto listingDto = listingDtos.get(0);
+        Listing listing = listingModelMapper.mapToListing(listingDto);
         listing.setId(id);
         listing.setRegistration(registration);
         listingRepository.delete(listing);
+    }
+
+    private boolean userCanDeleteListing(Long id, Registration registration){
+        RegistrationCreationDTO registrationCreationDTO = new RegistrationCreationDTO();
+        registrationCreationDTO.setId(registration.getId());
+        List<ListingDto> listingDtos = getAllAvailable(registrationCreationDTO);
+
+        ListingDto listing = listingDtos.stream().filter(listingDto -> listingDto.getId().longValue() == id).findFirst().orElse(null);
+        if(listing == null) {
+            return false;
+        }
+        return true;
     }
 
 }

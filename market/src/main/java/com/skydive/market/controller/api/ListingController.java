@@ -24,7 +24,7 @@ public class ListingController {
     private final ListingServiceImpl listingServiceImpl;
     private final RegistrationService registrationService;
     private final ListingModelDTOMapper listingModelDTOMapper;
-//
+
     @PostMapping(name = "CreateNewListing", value = "/new/{userId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<ListingCreationDto> createNewListing(@RequestBody final ListingRequest listingRequest, @PathVariable final Integer userId) {
         Registration registration = registrationService.getRegistration(userId);

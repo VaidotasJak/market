@@ -19,6 +19,7 @@ public class Listing {
     private String description;
     private Double weight;
     private Double price;
+    @Column(name="listingStatus")
     private ListingStatus listingStatus;
     @ManyToOne
     @JoinColumn(name = "registration_id")
