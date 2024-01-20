@@ -1,7 +1,9 @@
 package com.skydive.market.service;
 
+import com.skydive.market.dto.ListingAllDto;
 import com.skydive.market.dto.ListingModelDTO;
 import com.skydive.market.dto.RegistrationCreationDTO;
+import com.skydive.market.dto.mapper.ListingModelDTOMapper;
 import com.skydive.market.exceptions.ListingDoesNotBelongsToRegistrationException;
 import com.skydive.market.exceptions.NoSuchListingException;
 import com.skydive.market.model.Listing;
@@ -14,13 +16,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ListingServiceImpl implements ListingService{
     private final ListingRepository listingRepository;
     private final ListingModelMapper listingModelMapper;
+    private final ListingModelDTOMapper listingModelDTOMapper;
+
     @Override
     public List<ListingDto> getAllAvailable(final RegistrationCreationDTO dto) {
         List<ListingDto> listings = listingRepository.fetchAllAvailableListings(dto);
@@ -37,6 +40,16 @@ public class ListingServiceImpl implements ListingService{
         }
         return listings;
     }
+
+    public List<ListingAllDto> generateListing(List<ListingDto> listingDtos) {
+        List<ListingAllDto> listingAllDtos = new ArrayList<>();
+        for (ListingDto listingDto : listingDtos) {
+            listingAllDtos.add(listingModelDTOMapper.fromListingDtoListAllDto(listingDto));
+        }
+        return listingAllDtos;
+    }
+
+
 
     @Transactional
     @Override

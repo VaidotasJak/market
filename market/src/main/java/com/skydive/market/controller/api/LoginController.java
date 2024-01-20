@@ -1,11 +1,11 @@
 package com.skydive.market.controller.api;
 
 import com.skydive.market.controller.request.LoginRequest;
+import com.skydive.market.dto.ListingAllDto;
 import com.skydive.market.dto.LoginSuccessDTO;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.mapper.LoginModelDTOMapper;
 import com.skydive.market.dto.mapper.RegistrationModelDTOMapper;
-import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import com.skydive.market.service.ListingServiceImpl;
 import com.skydive.market.service.LoginService;
@@ -35,7 +35,7 @@ public class LoginController {
         Registration existingRegistration = loginService.login(loginModelDTOMapper.mapToModel(loginRequest));
 
         RegistrationCreationDTO registrationCreationDTO = registrationModelDTOMapper.fromRegistration(existingRegistration);
-        List<ListingDto> userListings = listingServiceImpl.getAllAvailable(registrationCreationDTO);
+        List<ListingAllDto> userListings = listingServiceImpl.generateListing(listingServiceImpl.getAllAvailable(registrationCreationDTO));
 
         LoginSuccessDTO loginSuccessDTO = loginModelDTOMapper.fromExistingRegistration(existingRegistration, userListings);
         return ResponseEntity.accepted().body(loginSuccessDTO);

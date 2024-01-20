@@ -1,11 +1,11 @@
 package com.skydive.market.controller.api;
 
 import com.skydive.market.controller.request.ListingRequest;
+import com.skydive.market.dto.ListingAllDto;
 import com.skydive.market.dto.ListingCreationDto;
 import com.skydive.market.dto.RegistrationCreationDTO;
 import com.skydive.market.dto.mapper.ListingModelDTOMapper;
 import com.skydive.market.model.Listing;
-import com.skydive.market.model.ListingDto;
 import com.skydive.market.model.Registration;
 import com.skydive.market.service.ListingServiceImpl;
 import com.skydive.market.service.RegistrationService;
@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,17 +35,17 @@ public class ListingController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<ListingDto>> getAllListings() {
-        List<ListingDto> listingDtos = listingServiceImpl.getAllAvailable();
-        return ResponseEntity.ok(listingDtos);
+    public ResponseEntity<List<ListingAllDto>> getAllListings() {
+        List<ListingAllDto> listingAllDtos = listingServiceImpl.generateListing(listingServiceImpl.getAllAvailable());
+        return ResponseEntity.ok(listingAllDtos);
     }
 
     @GetMapping("/{userId}/all")
-    public ResponseEntity<List<ListingDto>> getAllListings(@PathVariable final Long userId) {
+    public ResponseEntity<List<ListingAllDto>> getAllListings(@PathVariable final Long userId) {
         RegistrationCreationDTO registrationCreationDTO = new RegistrationCreationDTO();
         registrationCreationDTO.setId(userId);
-        List<ListingDto> listingDtos = listingServiceImpl.getAllAvailable(registrationCreationDTO);
-        return ResponseEntity.ok(listingDtos);
+        List<ListingAllDto> listingAllDtos = listingServiceImpl.generateListing(listingServiceImpl.getAllAvailable(registrationCreationDTO));
+        return ResponseEntity.ok(listingAllDtos);
     }
 
     @DeleteMapping("{id}")
