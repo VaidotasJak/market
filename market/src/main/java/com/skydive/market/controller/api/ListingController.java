@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -42,9 +41,9 @@ public class ListingController {
 
     @GetMapping("/{userId}/all")
     public ResponseEntity<List<ListingAllDto>> getAllListings(@PathVariable final Long userId) {
-        RegistrationCreationDTO registrationCreationDTO = new RegistrationCreationDTO();
-        registrationCreationDTO.setId(userId);
-        List<ListingAllDto> listingAllDtos = listingServiceImpl.generateListing(listingServiceImpl.getAllAvailable(registrationCreationDTO));
+        RegistrationCreationDTO registrationDto = new RegistrationCreationDTO();
+        registrationDto.setId(userId);
+        List<ListingAllDto> listingAllDtos = listingServiceImpl.generateListing(listingServiceImpl.getAllAvailable(registrationDto));
         return ResponseEntity.ok(listingAllDtos);
     }
 

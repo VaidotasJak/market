@@ -23,9 +23,12 @@ public class ListingServiceImpl implements ListingService{
     private final ListingRepository listingRepository;
     private final ListingModelMapper listingModelMapper;
     private final ListingModelDTOMapper listingModelDTOMapper;
+    private final RegistrationService registrationService;
+
 
     @Override
     public List<ListingDto> getAllAvailable(final RegistrationCreationDTO dto) {
+        registrationService.getRegistration(dto.getId().intValue());
         List<ListingDto> listings = listingRepository.fetchAllAvailableListings(dto);
         if(listings.isEmpty()){
             return new ArrayList<>();
@@ -48,7 +51,6 @@ public class ListingServiceImpl implements ListingService{
         }
         return listingAllDtos;
     }
-
 
 
     @Transactional

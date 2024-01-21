@@ -20,10 +20,7 @@ public class RegistrationService {
     private final RegistrationRepository registrationRepository;
     private final RegistrationModelDTOMapper registrationModelDTOMapper;
     private final RegistrationModelMapper registrationModelMapper;
-//    public void saveAll(List<Registration> registrations) {
-//        RegistrationRepository registrationRepository = new RegistrationRepository();
-//        registrationRepository.saveAll(registrations);
-//    }
+
     public Registration registerNewUser(RegistrationModelDTO dto) {
         List<Registration> existingRegistrations = registrationRepository.fetchData(dto);
         if (!existingRegistrations.isEmpty()) {
@@ -31,10 +28,6 @@ public class RegistrationService {
         }
         return registrationRepository.save(registrationModelMapper.mapToModel(dto));
     }
-
-//    public Registration saveRegistration(Registration registration) {
-//        return registrationRepository.save(registration);
-//    }
 
     public List<RegistrationCreationDTO> getAllRegistrations() {
         List<Registration> registrationList = registrationRepository.getAllRegistrations();
@@ -45,7 +38,9 @@ public class RegistrationService {
 
     public Registration getRegistration(Integer userId) {
         Registration registrationList = registrationRepository.getRegistration(userId);
-        if(registrationList == null) {throw new NoSuchUserException("User with id: " + userId + " does not exists."); }
+        if (registrationList == null) {
+            throw new NoSuchUserException("User with id: " + userId + " does not exists.");
+        }
         return registrationList;
     }
 

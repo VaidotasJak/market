@@ -1,6 +1,8 @@
 package com.skydive.market.model;
 
 import com.skydive.market.model.enums.SportType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -13,6 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 @Entity
+@Builder
+@AllArgsConstructor
 @Table(name = "registration")
 public class Registration {
     @Id
